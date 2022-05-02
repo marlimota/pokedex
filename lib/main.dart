@@ -1,6 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex/features/data/repositories/pokemon_repository_impl.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokedex/features/presentation/cubit/pokemon_cubit.dart';
 import 'package:pokedex/features/presentation/home_page/home_page_container.dart';
 
 void main() {
@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: HomePageContainer(
-        repository: PokemonRepositoryImpl(dio: Dio()),
-      ),
+      home: BlocProvider<PokemonCubit>(
+        create: (context) => PokemonCubit(),
+        child: const HomePageContainer())
     );
   }
 }

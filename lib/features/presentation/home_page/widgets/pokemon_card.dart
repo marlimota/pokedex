@@ -4,24 +4,23 @@ import 'package:pokedex/features/domain/repositories/pokemon_repository.dart';
 import 'package:pokedex/features/presentation/details_page/details_page_container.dart';
 
 class PokemonCard extends StatelessWidget {
-  const PokemonCard({Key? key, required this.pokemon, required this.repository})
+  const PokemonCard({Key? key, required this.pokemon})
       : super(key: key);
 
   final PokemonEntity pokemon;
-  final IPokemonRepository repository;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => DetailsPageContainer(
-                    pokemonName: pokemon.name,
-                    repository: repository,
-                  )),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //       builder: (context) => DetailsPageContainer(
+        //             pokemonName: pokemon.name,
+        //             repository: repository,
+        //           )),
+        // );
       },
       child: Container(
         margin: const EdgeInsets.all(8),
