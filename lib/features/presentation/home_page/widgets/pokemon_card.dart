@@ -1,27 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/features/domain/entities/pokemon.dart';
-import 'package:pokedex/features/domain/repositories/pokemon_repository.dart';
-import 'package:pokedex/features/presentation/details_page/details_page_container.dart';
 
 class PokemonCard extends StatelessWidget {
-  const PokemonCard({Key? key, required this.pokemon})
-      : super(key: key);
+  const PokemonCard({Key? key, required this.pokemon}) : super(key: key);
 
   final PokemonEntity pokemon;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //       builder: (context) => DetailsPageContainer(
-        //             pokemonName: pokemon.name,
-        //             repository: repository,
-        //           )),
-        // );
-      },
       child: Container(
         margin: const EdgeInsets.all(8),
         decoration: BoxDecoration(
@@ -33,30 +20,17 @@ class PokemonCard extends StatelessWidget {
           children: [
             Text(
               pokemon.name,
-              style: TextStyle(
-                color: pokemon.baseColor?.withOpacity(0.6),
+              style: const TextStyle(
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
-                shadows: const [
-                  Shadow(
-                    color: Color.fromARGB(255, 46, 45, 45),
-                    blurRadius: 1,
-                  ),
-                ],
                 fontSize: 17,
               ),
             ),
             Text(
               pokemon.number,
-              style: TextStyle(
-                color: pokemon.baseColor?.withOpacity(0.6),
+              style: const TextStyle(
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
-                //backgroundColor: Colors.white,
-                shadows: const [
-                  Shadow(
-                    color: Color.fromARGB(255, 46, 45, 45),
-                    blurRadius: 1,
-                  ),
-                ],
               ),
             ),
             Row(
@@ -91,13 +65,15 @@ class PokemonType extends StatelessWidget {
         itemCount: pokemon.type.length,
         itemBuilder: (BuildContext context, int index) {
           return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
+                width: 60,
+                height: 26,
                 decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.3),
+                    color: Colors.black.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(18)),
-                child: Padding(
-                  padding: const EdgeInsets.all(6),
+                child: Center(
                   child: Text(
                     pokemon.type[index],
                     style: const TextStyle(

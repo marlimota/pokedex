@@ -9,14 +9,11 @@ import '../../domain/repositories/pokemon_repository.dart';
 part 'pokemon_state.dart';
 
 class PokemonCubit extends Cubit<PokemonState> {
-
-  PokemonCubit() : super(PokemonInitial())
-  {
-    GetPokemons();
+  PokemonCubit() : super(PokemonInitial()) {
+    getPokemons();
   }
 
-  Future<void> GetPokemons() async
-  {
+  Future<void> getPokemons() async {
     emit(PokemonLoading());
 
     final IPokemonRepository repository = PokemonRepositoryImpl(dio: Dio());

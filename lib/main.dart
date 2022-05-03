@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider<PokemonCubit>(
         create: (context) => PokemonCubit(),
-        child: const HomePageContainer())
+        child: const HomePageContainer(),
+      ),
     );
   }
 }
