@@ -7,8 +7,8 @@ import 'package:pokedex/features/presentation/widgets/error_component.dart';
 import 'package:pokedex/features/presentation/widgets/splash_screen.dart';
 
 //Faz o controle do que é mostrado na HomePage de acordo com o estado
-class HomePageContainer extends StatelessWidget {
-  const HomePageContainer({
+class HomePageController extends StatelessWidget {
+  const HomePageController({
     Key? key,
   }) : super(key: key);
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/features/presentation/cubit/pokemon_cubit.dart';
-import 'package:pokedex/features/presentation/home_page/home_page_container.dart';
+import 'package:pokedex/features/presentation/home_page/home_page_controller.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider<PokemonCubit>(
         create: (context) => PokemonCubit(),
-        child: const HomePageContainer(),
+        child: const HomePageController(),
       ),
     );
   }
