@@ -8,7 +8,8 @@ class LoadingComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
         child: CircularProgressIndicator(
-      backgroundColor: Colors.white,
+      color: Colors.red,
+      backgroundColor: Colors.amber,
     ));
   }
 }

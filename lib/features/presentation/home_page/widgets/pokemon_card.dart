@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/features/domain/entities/pokemon.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class PokemonCard extends StatelessWidget {
   const PokemonCard({Key? key, required this.pokemon}) : super(key: key);
@@ -23,7 +24,7 @@ class PokemonCard extends StatelessWidget {
               style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 17,
+                fontSize: 18,
               ),
             ),
             Text(
@@ -40,7 +41,18 @@ class PokemonCard extends StatelessWidget {
                 PokemonType(
                   pokemon: pokemon,
                 ),
-                Flexible(child: Image.network(pokemon.image)),
+                Flexible(
+                  child: CachedNetworkImage(
+                    imageUrl: pokemon.image,
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(
+                      color: Colors.amber,
+                    ),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                  ),
+                )
+                //Image.network(pokemon.image),
               ],
             ),
           ],

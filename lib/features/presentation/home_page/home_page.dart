@@ -23,15 +23,15 @@ class HomePage extends StatelessWidget {
                   foreground: Paint()
                     ..style = PaintingStyle.stroke
                     ..strokeWidth = 8
-                    ..color = const Color.fromARGB(255, 52, 102, 175),
+                    ..color = const Color.fromARGB(255, 41, 108, 209),
                 ),
               ),
               const Text(
                 'Pokedéx',
                 style: TextStyle(
                   fontFamily: 'Pokemon',
-                  fontSize: 32,
-                  color: Color.fromARGB(255, 255, 203, 5),
+                  fontSize: 32.5,
+                  color: Color.fromARGB(255, 250, 210, 48),
                 ),
               ),
             ],
@@ -50,28 +50,6 @@ class HomePage extends StatelessWidget {
               )
               .toList(),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(16, 243, 52, 38),
-        selectedFontSize: 14,
-        selectedIconTheme: const IconThemeData(
-            color: Color.fromARGB(255, 251, 36, 21), size: 30),
-        selectedItemColor: const Color.fromARGB(255, 251, 36, 21),
-        selectedLabelStyle: const TextStyle(),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favoritos',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.badge_sharp),
-            label: 'Time',
-          ),
-        ],
       ),
     );
   }
