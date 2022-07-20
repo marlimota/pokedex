@@ -16,8 +16,8 @@ class SearchComponent extends StatelessWidget {
           vertical: 8,
         ),
         child: Row(
-          children: [
-            const Icon(
+          children: const [
+            Icon(
               Icons.search,
               color: Colors.grey,
             ),

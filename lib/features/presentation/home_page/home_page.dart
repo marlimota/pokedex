@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
                   foreground: Paint()
                     ..style = PaintingStyle.stroke
                     ..strokeWidth = 6
-                    ..color = Color.fromARGB(181, 132, 207, 192),
+                    ..color = const Color.fromARGB(181, 132, 207, 192),
                   //color: Color.fromARGB(255, 232, 249, 247),
                 ),
               ),
