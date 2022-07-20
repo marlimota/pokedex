@@ -97,6 +97,12 @@ flutter:
      - family: Pokemon
        fonts:
           - asset: lib\core\consts\Pokemon Solid.ttf
+     - family: Moderna
+       fonts: 
+          - asset: lib\core\consts\MODERNA_.TTF
+     - family: Monofett
+       fonts: 
+          - asset: lib\core\consts\Monofett.ttf    
 
   
           

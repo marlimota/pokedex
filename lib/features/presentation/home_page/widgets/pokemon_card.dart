@@ -10,53 +10,70 @@ class PokemonCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Container(
-        margin: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: pokemon.baseColor?.withOpacity(0.80),
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              pokemon.name,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-            Text(
-              pokemon.number,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                PokemonType(
-                  pokemon: pokemon,
-                ),
-                Flexible(
-                  child: CachedNetworkImage(
-                    imageUrl: pokemon.image,
-                    placeholder: (context, url) =>
-                        const CircularProgressIndicator(
-                      color: Colors.amber,
-                    ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+      child: Stack(
+        alignment: AlignmentDirectional.bottomEnd,
+        fit: StackFit.loose,
+        children: [
+          Container(
+            margin: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: pokemon.baseColor?.withOpacity(0.75),
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: const [
+                BoxShadow(
+                  color: Color.fromARGB(120, 0, 0, 0),
+                  blurRadius: 5, // soften the shadow
+                  spreadRadius: 1, //extend the shadow
+                  offset: Offset(
+                    4, // Move to right 10  horizontally
+                    4, // Move to bottom 10 Vertically
                   ),
-                )
-                //Image.network(pokemon.image),
+                ),
               ],
             ),
-          ],
-        ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  pokemon.name,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+                Text(
+                  pokemon.number,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    height: 0.01,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    PokemonType(
+                      pokemon: pokemon,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          CachedNetworkImage(
+            fit: BoxFit.fill,
+            imageUrl: pokemon.image,
+            placeholder: (context, url) => const CircularProgressIndicator(
+              value: 0.5,
+              strokeWidth: 0.5,
+              color: Colors.amber,
+            ),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          ),
+        ],
       ),
     );
   }
