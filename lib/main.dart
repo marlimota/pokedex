@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        primaryColor: const Color.fromARGB(255, 4, 125, 91),
       ),
       home: BlocProvider<PokemonCubit>(
         create: (context) => PokemonCubit(),
