@@ -26,90 +26,107 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Stack(
         children: [
-          const BackgroundScreens(),
+          const BackgroundScreen(),
           Column(
             children: [
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.025,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.87,
-                      child: TextField(
-                        cursorColor: Colors.green,
-                        decoration: const InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.search,
-                            size: 32,
-                            color: Color.fromARGB(255, 3, 149, 125),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color.fromARGB(255, 61, 186, 166),
-                              width: 2,
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(18),
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color.fromARGB(255, 6, 134, 112),
-                              width: 2,
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(18),
-                            ),
-                          ),
-                          // border: OutlineInputBorder(
-                          //   borderSide: BorderSide(
-                          //     color: Color.fromARGB(255, 3, 149, 125),
-                          //     width: 5,
-                          //   ),
-                          //   borderRadius: BorderRadius.all(
-                          //     Radius.circular(20),
-                          //   ),
-                          // ),
-                        ),
-                        onChanged: (searchTerm) {
-                          setState(() {
-                            filtredPokemonList =
-                                List<PokemonEntity>.from(widget.pokemonsList);
-                            filtredPokemonList.removeWhere((element) => !element
-                                .name
-                                .toLowerCase()
-                                .contains(searchTerm.toLowerCase()));
-                          });
-                        },
-                      )),
-                ],
-              ),
-              Expanded(
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  children: filtredPokemonList
-                      .map(
-                        (e) => PokemonCard(
-                          pokemon: e,
-                        ),
-                      )
-                      .toList(),
-                ),
-              ),
+              searchComponent(context),
+              PokemonsList(filtredPokemonList: filtredPokemonList),
             ],
           ),
         ],
       ),
     );
   }
+
+  searchComponent(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.915,
+      height: MediaQuery.of(context).size.height * 0.0765,
+      child: TextField(
+        style: const TextStyle(
+          color: Color.fromARGB(255, 3, 149, 125),
+          fontSize: 16,
+        ),
+        cursorColor: Colors.green,
+        decoration: const InputDecoration(
+          filled: true,
+          fillColor: Colors.white54,
+          prefixIcon: Icon(
+            Icons.search,
+            size: 30,
+            color: Color.fromARGB(255, 3, 149, 125),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Color.fromARGB(255, 61, 186, 166),
+              width: 2,
+            ),
+            borderRadius: BorderRadius.all(
+              Radius.circular(12),
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Color.fromARGB(255, 6, 134, 112),
+              width: 2,
+            ),
+            borderRadius: BorderRadius.all(
+              Radius.circular(18),
+            ),
+          ),
+          // border: OutlineInputBorder(
+          //   borderSide: BorderSide(
+          //     color: Color.fromARGB(255, 3, 149, 125),
+          //     width: 5,
+          //   ),
+          //   borderRadius: BorderRadius.all(
+          //     Radius.circular(20),
+          //   ),
+          // ),
+        ),
+        onChanged: (searchTerm) {
+          setState(() {
+            filtredPokemonList = List<PokemonEntity>.from(widget.pokemonsList);
+            filtredPokemonList.removeWhere((element) =>
+                !element.name.toLowerCase().contains(searchTerm.toLowerCase()));
+          });
+        },
+      ),
+    );
+  }
 }
 
-class BackgroundScreens extends StatelessWidget {
-  const BackgroundScreens({
+class PokemonsList extends StatelessWidget {
+  const PokemonsList({
+    Key? key,
+    required this.filtredPokemonList,
+  }) : super(key: key);
+
+  final List<PokemonEntity> filtredPokemonList;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: GridView.count(
+        crossAxisCount: 2,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        children: filtredPokemonList
+            .map(
+              (e) => PokemonCard(
+                pokemon: e,
+              ),
+            )
+            .toList(),
+      ),
+    );
+  }
+}
+
+class BackgroundScreen extends StatelessWidget {
+  const BackgroundScreen({
     Key? key,
   }) : super(key: key);
 
