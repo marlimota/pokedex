@@ -17,7 +17,7 @@ class PokemonCard extends StatelessWidget {
           Container(
             margin: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: pokemon.baseColor?.withOpacity(0.75),
+              color: pokemon.baseColor?.withOpacity(0.5),
               borderRadius: BorderRadius.circular(16),
               boxShadow: const [
                 BoxShadow(
@@ -64,6 +64,8 @@ class PokemonCard extends StatelessWidget {
             ),
           ),
           CachedNetworkImage(
+            width: 110,
+            height: 110,
             fit: BoxFit.fill,
             imageUrl: pokemon.image,
             placeholder: (context, url) => const CircularProgressIndicator(
