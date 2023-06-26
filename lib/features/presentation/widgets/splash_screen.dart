@@ -33,9 +33,9 @@ class SplashScreen extends StatelessWidget {
                     fit: BoxFit.fitWidth),
               ),
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Text(
                   'Pokedex',
                   style: TextStyle(
